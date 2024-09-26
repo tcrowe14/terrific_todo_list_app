@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "terrific_todo_list_app",
+    "scheme": "terrific_todo_list_app",
     "slug": "terrific_todo_list_app",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -22,6 +23,9 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "expo-router"
+    ]
   }
 }
