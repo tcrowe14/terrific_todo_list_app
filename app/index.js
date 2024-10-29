@@ -1,13 +1,22 @@
 import { StyleSheet, Text, View } from "react-native";
+import { StatusBar } from 'expo-status-bar';
 import ToDoList from "../components/ToDoList";
 import ToDoForm from "../components/ToDoForm";
+import { useState } from 'react';
 
 export default function Page() {
+  const [tasks, setTasks] = useState([
+    'Do laundry',
+    'Go to gym',
+    'Walk dog'
+  ]);
+  
   return (
     <View style={styles.container}>
       <View style={styles.main}>
-<ToDoList />
-<ToDoForm />
+      <ToDoList tasks={tasks} />
+      <ToDoForm />
+      <StatusBar style="auto" />
       </View>
     </View>
   );
