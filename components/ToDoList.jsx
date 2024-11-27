@@ -1,20 +1,15 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet, Pressable, View, Text, ScrollView } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
-// Destructure the tasks prop
-function ToDoList({ tasks }) {
+export default function ToDoList({tasks}) {
   return (
-    <SafeAreaView>
-      <ScrollView>
+    <View style={styles.completed}>
         {tasks.map((task, index) => (
-          <Pressable key={index}>
-            <View style={styles.task}>
-              <Text style={styles.taskText}>{task}</Text>
-            </View>
-          </Pressable>
+          <View style={styles.task} key={index}>
+            <View style={styles.taskText}>{task}</View>
+          </View>
         ))}
-      </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 }
 
@@ -22,11 +17,12 @@ const styles = StyleSheet.create({
   task: {
     padding: 10,
     borderBottomWidth: 1,
-    borderColor: '#ccc',
+  },
+  completed: {
+    backgroundColor: '#e0e0e0',
+    width: 275,
   },
   taskText: {
     fontSize: 16,
   },
 });
-
-export default ToDoList;

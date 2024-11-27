@@ -5,26 +5,32 @@
  */
 
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  Pressable,
-  View,
-  Text,
-  ScrollView,
-  TextInput,
-  Button
-} from 'react-native';
+import {SafeAreaView, StyleSheet, View, TextInput, Pressable, Text} from 'react-native';
+import { useState } from 'react';
 
 
-function ToDoForm() {
+function ToDoForm({ addTask }) {
+
+  const [taskText, setTaskText] = useState('');
+
+  handleAddTask = () => {
+    addTask(taskText);
+    setTaskText('');
+  };
+
   return (
     <SafeAreaView>
       <View style={styles.form}>
         <TextInput
           style={styles.input}
-          placeholder="Add a new task..."/>
-        <Button title="Add" />
+          placeholder="Add a new task..."
+          onChangeText={setTaskText}
+          value={taskText}
+        />
+      <Pressable onPress={handleAddTask} style={styles.button}>
+        <Text>Add Task</Text>
+      </Pressable>
+
       </View>
     </SafeAreaView>
   );
@@ -46,6 +52,14 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
     marginRight: 10,
   },
+  button: {
+    backgroundColor: '#99c5e8',
+    padding: 10,
+    borderRadius: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  
 });
 
 export default ToDoForm;
